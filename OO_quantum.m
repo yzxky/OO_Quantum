@@ -66,7 +66,7 @@ k = 1;
 g = 10;
 s = ceil(exp(Z1) * k^Z2 * g^Z3 + Z4);
 
-%% Selected set number & Good enough set number mapping 
+%% Selected set number evaluation 
 k = 1;
 sg_map = zeros(1000, 2);
 for g = 1:1000
@@ -74,14 +74,14 @@ for g = 1:1000
 end 
 
 s_num = 10000; % initial, a considerably large number 
-sg_table = zeros(size(sg_map));
+s_table = zeros(size(sg_map, 1), 3);
 j = 1;
 for i = 1:1000
     if sg_map(i, 1) ~= s_num
         s_num = sg_map(i, 1);
-        sg_table(j, :) = sg_map(i, :);
+        s_table(j, :) = [sg_map(i, 1), sg_map(i, 2) / N1, sg_map(i, 2) / N1 * 0.9];
         j = j + 1;
     end
 end
-sg_table(j:size(sg_map, 1), :) = [];
-save "sg_table.txt" sg_table;
+s_table(j:size(sg_map, 1), :) = [];
+save "s_table.txt" s_table;
