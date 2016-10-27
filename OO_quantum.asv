@@ -50,8 +50,7 @@ y1_crude = (J1_crude_sort - J1_crude_sort(1)) / (J1_crude_sort(N2) - J1_crude_so
 x1_crude = (0 : N2 - 1) / (N2 - 1);
 % subplot(1, 3, 1);
 crude_curve = plot(x1_crude, y1_crude, 'r-.');
-legend([accur_curve, crude_curve], 'Accurate Curve', 'Crude Cruve');
-
+legend('A', accur_curve, 
 %% Noise evaluation of function J1_crude
 noise_J1 = noise_lambda / (J1_crude_sort(N2) - J1_crude_sort(1))
 
@@ -96,5 +95,5 @@ save 's_table.txt' 's_table' -ascii;
 
 title = {'Selected Set Number', 'Top %'}
 data_cell = mat2cell(s_table, ones(size(s_table, 1), 1), ones(size(s_table, 2), 1));
-result = [title; data_cell];
+result = [title; data_cell]
 xlswrite('s_table.xls', result);
